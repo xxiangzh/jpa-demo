@@ -19,10 +19,15 @@ public class UserRepositoryTest {
 
     @Test
     public void testSaveUser() {
-        User user = userRepository.save(User.builder().name("ee").email("asfs@126.com").build());
-        Assert.assertNotNull(user);
+        User user = userRepository.save(User.builder().name("XZZ").email("FDG@126.com").metaLogicFlag(1).build());
         List<User> users = userRepository.findAll();
         System.out.println(users);
-        Assert.assertNotNull(users);
+    }
+
+    @Test
+    public void testDelUser() {
+        userRepository.delete(User.builder().id(1L).build());
+        List<User> users = userRepository.findAll();
+        System.out.println(users);
     }
 }
