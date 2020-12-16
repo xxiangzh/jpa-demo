@@ -22,3 +22,4 @@ spring:
       connection-test-query: SELECT 1
   jpa:
     generate-ddl: true
+    show-sql: true

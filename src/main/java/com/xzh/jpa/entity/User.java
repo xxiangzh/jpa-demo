@@ -1,32 +1,29 @@
 package com.xzh.jpa.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.SQLDelete;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@SQLDelete(sql = "UPDATE user SET meta_logic_flag = 2 where meta_logic_flag = 1 and id = ?")
-@Entity
+@SQLDelete(sql = "UPDATE user SET delete_flag = 2 where delete_flag = 1 and id = ?")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "t_user")
 public class User {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String username;
 
-    private String email;
+    private String password;
 
-    private Integer metaLogicFlag;
+    private Integer deleteFlag;
 }
